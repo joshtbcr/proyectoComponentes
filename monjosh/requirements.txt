@@ -1,4 +1,4 @@
 bson
 Flask==0.12.2
-pymongo==2.8.1
+PyMongo==3.9.0
 redis
