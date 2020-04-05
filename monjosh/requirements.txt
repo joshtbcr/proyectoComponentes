@@ -1,4 +1,4 @@
 bson
-Flask==0.12.2
+Flask==1.0
 PyMongo==3.9.0
 redis
