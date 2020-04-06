@@ -2,3 +2,5 @@ bson
 Flask==1.1.2
 PyMongo==3.9.0
 redis
+azure-storage-common==2.1.0
+azure-storage-queue==2.1.0

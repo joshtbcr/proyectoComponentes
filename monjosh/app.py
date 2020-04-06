@@ -5,8 +5,7 @@ import os
 import logging
 import json
 from bson import json_util
-##from queue_messages import QueueMessage
-##from azure.storage.common import CloudStorageAccount
+from azure.storage.queue import QueueService
 
 app = Flask(__name__)
 title = "Monjosh App"
@@ -19,6 +18,7 @@ client = MongoClient("mongodb://monjoshdb:2PBsBQi43gAKECaFF8A1bYrQeEHxVUrllDN82V
 db = client.monjoshdb
 db.authenticate(name="monjoshdb",
                 password='2PBsBQi43gAKECaFF8A1bYrQeEHxVUrllDN82V8T3gcTrOsPFT6TqeHdqHyNXJbDoYOWorosspRW2pXrT8YVlQ==')
+queue_service = QueueService(account_name='joshstoragequeue', account_key='AhaC+CI57J5fz17mFen4sFNP/KawQMKGUAaAPhjgoJtarr5tQ4z/3VP0/Qc5zUBNV/9FvM4aZPMbSZbFihwYBQ==')
 
 # Nombre de colecciones
 productosCollection = db.productos
@@ -50,15 +50,12 @@ def listaIngredientes():
     try:
         logging.info(f'INICIO ==> OBTENER TODOS INGREDIENTES')
         
-        ingredientes = ingredientesCollection.find()
-        ingredientes_resultado = []
-        for ingrediente in ingredientes:
-            ingrediente.pop('_id')
-            ingredientes_resultado.append(ingrediente)
+        ingredientes = [ingrediente for ingrediente in ingredientesCollection.find()]
+        ingredientes_json = json.loads(json_util.dumps(ingredientes))
             
         logging.info(f'FIN ==> OBTENER TODOS INGREDIENTES')
 
-        return jsonify({'ingredientes': ingredientes_resultado})
+        return jsonify({'ingredientes': ingredientes_json})
     except Exception as exc:
         logging.error(f'ERROR: No se pueden obtener los ingredientes: {exc}')
         return None
@@ -94,6 +91,13 @@ def ingresarUsuario():
         }
     )
     return redirect("/")
+
+
+@app.route("/enviarMensaje", methods=['GET'])
+def enviarMensajeACola():
+    queue_service.create_queue('monjoshqueue')
+    queue_service.put_message('monjoshqueue', u'Hello Monica')
+    return 'mensaje enviado'
 
 
 # APP.RUN y puerto
