@@ -1,0 +1,117 @@
+2020-04-08 09:09:11,958 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:09:18,229 - 127.0.0.1 - - [08/Apr/2020 09:09:18] "[37mGET / HTTP/1.1[0m" 200 -
+2020-04-08 09:14:07,940 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:14:09,589 - INICIO ==> OBTENER TODOS INGREDIENTES
+2020-04-08 09:14:09,762 - FIN ==> OBTENER TODOS INGREDIENTES
+2020-04-08 09:14:09,762 - ERROR: No se pueden obtener los ingredientes: 'Request' object has no attribute 'is_xhr'
+2020-04-08 09:14:09,806 - 127.0.0.1 - - [08/Apr/2020 09:14:09] "[35m[1mGET /ingredientes/all HTTP/1.1[0m" 500 -
+2020-04-08 09:19:05,669 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:19:10,795 - 127.0.0.1 - - [08/Apr/2020 09:19:10] "[37mGET /buscar HTTP/1.1[0m" 200 -
+2020-04-08 09:46:15,867 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:46:27,891 - Realizando busqueda en queue de:
+2020-04-08 09:46:27,916 - 127.0.0.1 - - [08/Apr/2020 09:46:27] "[35m[1mGET /buscar?query=potato HTTP/1.1[0m" 500 -
+2020-04-08 09:47:02,517 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:47:02,712 - Realizando busqueda en queue de:
+2020-04-08 09:47:02,713 - 127.0.0.1 - - [08/Apr/2020 09:47:02] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 09:47:04,244 - Realizando busqueda en queue de:
+2020-04-08 09:47:04,244 - 127.0.0.1 - - [08/Apr/2020 09:47:04] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 09:47:45,531 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:47:47,198 - Realizando busqueda en queue de:
+2020-04-08 09:47:47,199 - 127.0.0.1 - - [08/Apr/2020 09:47:47] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 09:48:42,053 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:48:43,516 - Realizando busqueda en queue de:
+2020-04-08 09:48:43,542 - 127.0.0.1 - - [08/Apr/2020 09:48:43] "[35m[1mGET /buscar?query=potato HTTP/1.1[0m" 500 -
+2020-04-08 09:49:19,361 - Realizando busqueda en queue de:
+2020-04-08 09:49:19,378 - 127.0.0.1 - - [08/Apr/2020 09:49:19] "[35m[1mGET /buscar?query=potato&query2=meat HTTP/1.1[0m" 500 -
+2020-04-08 09:49:44,351 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 09:49:44,519 - Realizando busqueda en queue de:
+2020-04-08 09:49:44,521 - 127.0.0.1 - - [08/Apr/2020 09:49:44] "[37mGET /buscar?query=potato&query2=meat HTTP/1.1[0m" 200 -
+2020-04-08 22:27:25,605 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 22:29:04,503 - Realizando busqueda en queue de:
+2020-04-08 22:29:04,507 - 127.0.0.1 - - [08/Apr/2020 22:29:04] "[37mGET /buscar?query=potato&query2=meat HTTP/1.1[0m" 200 -
+2020-04-08 22:49:15,193 - Realizando busqueda en queue de:
+2020-04-08 22:49:15,194 - 127.0.0.1 - - [08/Apr/2020 22:49:15] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 22:50:37,509 - Realizando busqueda en queue de:
+2020-04-08 22:50:37,511 - 127.0.0.1 - - [08/Apr/2020 22:50:37] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 22:51:22,734 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 22:51:30,166 - Realizando busqueda en queue de:
+2020-04-08 22:51:30,174 - Client-Request-ID=c721c357-7a1d-11ea-b54b-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '103', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'c721c357-7a1d-11ea-b54b-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 04:51:30 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 22:51:31,130 - Client-Request-ID=c721c357-7a1d-11ea-b54b-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 04:51:31 GMT, Server-Request-ID=5bbd09ea-8003-0054-3a2a-0e4241000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '5bbd09ea-8003-0054-3a2a-0e4241000000', 'x-ms-client-request-id': 'c721c357-7a1d-11ea-b54b-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 04:51:31 GMT'}.
+2020-04-08 22:51:31,145 - Busqueda enviada a FoodApi
+2020-04-08 22:51:31,147 - 127.0.0.1 - - [08/Apr/2020 22:51:31] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 22:56:27,956 -  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+2020-04-08 22:56:32,638 - Realizando busqueda en queue de:
+2020-04-08 22:56:32,646 - Client-Request-ID=7b6b6188-7a1e-11ea-bf9b-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '7b6b6188-7a1e-11ea-bf9b-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 04:56:32 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 22:56:33,755 - Client-Request-ID=7b6b6188-7a1e-11ea-bf9b-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 04:56:34 GMT, Server-Request-ID=9f5192e9-0003-0028-482b-0edf74000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '9f5192e9-0003-0028-482b-0edf74000000', 'x-ms-client-request-id': '7b6b6188-7a1e-11ea-bf9b-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 04:56:34 GMT'}.
+2020-04-08 22:56:33,757 - Busqueda enviada a FoodApi
+2020-04-08 22:56:33,757 - 127.0.0.1 - - [08/Apr/2020 22:56:33] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 22:56:48,815 - Realizando busqueda en queue de:
+2020-04-08 22:56:48,815 - Client-Request-ID=850e92d9-7a1e-11ea-886c-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '850e92d9-7a1e-11ea-886c-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 04:56:48 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 22:56:49,496 - Client-Request-ID=850e92d9-7a1e-11ea-886c-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 04:56:49 GMT, Server-Request-ID=2860acda-d003-00ed-6d2b-0ea14f000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '2860acda-d003-00ed-6d2b-0ea14f000000', 'x-ms-client-request-id': '850e92d9-7a1e-11ea-886c-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 04:56:49 GMT'}.
+2020-04-08 22:56:49,499 - Busqueda enviada a FoodApi
+2020-04-08 22:56:49,499 - 127.0.0.1 - - [08/Apr/2020 22:56:49] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:01:11,409 - Realizando busqueda en queue de:
+2020-04-08 23:01:11,411 - Client-Request-ID=21938fe6-7a1f-11ea-be01-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '21938fe6-7a1f-11ea-be01-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:01:11 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:01:13,152 - Client-Request-ID=21938fe6-7a1f-11ea-be01-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:01:13 GMT, Server-Request-ID=4c01cf1e-f003-0079-102b-0ec181000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '4c01cf1e-f003-0079-102b-0ec181000000', 'x-ms-client-request-id': '21938fe6-7a1f-11ea-be01-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:01:13 GMT'}.
+2020-04-08 23:01:13,156 - Busqueda enviada a FoodApi
+2020-04-08 23:01:13,157 - 127.0.0.1 - - [08/Apr/2020 23:01:13] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:39:45,667 - Realizando busqueda en queue de:
+2020-04-08 23:39:45,669 - Client-Request-ID=84fb3a65-7a24-11ea-a3c2-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '84fb3a65-7a24-11ea-a3c2-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:39:45 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:39:46,321 - Client-Request-ID=84fb3a65-7a24-11ea-a3c2-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:39:47 GMT, Server-Request-ID=90bea8a0-5003-0056-5231-0e40bb000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '90bea8a0-5003-0056-5231-0e40bb000000', 'x-ms-client-request-id': '84fb3a65-7a24-11ea-a3c2-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:39:47 GMT'}.
+2020-04-08 23:39:46,327 - Busqueda enviada a FoodApi
+2020-04-08 23:39:46,328 - 127.0.0.1 - - [08/Apr/2020 23:39:46] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:41:04,490 - Realizando busqueda en queue de:
+2020-04-08 23:41:04,491 - Client-Request-ID=b3f6620f-7a24-11ea-b34b-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'b3f6620f-7a24-11ea-b34b-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:41:04 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:41:05,072 - Client-Request-ID=b3f6620f-7a24-11ea-b34b-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:41:05 GMT, Server-Request-ID=6a3fc3d8-b003-0090-0a31-0e3d87000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '6a3fc3d8-b003-0090-0a31-0e3d87000000', 'x-ms-client-request-id': 'b3f6620f-7a24-11ea-b34b-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:41:05 GMT'}.
+2020-04-08 23:41:05,079 - Busqueda enviada a FoodApi
+2020-04-08 23:41:05,080 - 127.0.0.1 - - [08/Apr/2020 23:41:05] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:42:35,983 - Realizando busqueda en queue de:
+2020-04-08 23:42:35,984 - Client-Request-ID=ea7f6396-7a24-11ea-aeec-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'ea7f6396-7a24-11ea-aeec-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:42:35 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:42:36,604 - Client-Request-ID=ea7f6396-7a24-11ea-aeec-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:42:37 GMT, Server-Request-ID=e272817e-d003-0080-5231-0e0b61000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': 'e272817e-d003-0080-5231-0e0b61000000', 'x-ms-client-request-id': 'ea7f6396-7a24-11ea-aeec-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:42:37 GMT'}.
+2020-04-08 23:42:36,606 - Busqueda enviada a FoodApi
+2020-04-08 23:42:36,607 - 127.0.0.1 - - [08/Apr/2020 23:42:36] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:45:58,064 - Realizando busqueda en queue de:
+2020-04-08 23:45:58,065 - Client-Request-ID=62f27794-7a25-11ea-9ee7-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '62f27794-7a25-11ea-9ee7-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:45:58 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:45:58,641 - Client-Request-ID=62f27794-7a25-11ea-9ee7-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:45:59 GMT, Server-Request-ID=019ca9be-2003-0119-6932-0ec2f6000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '019ca9be-2003-0119-6932-0ec2f6000000', 'x-ms-client-request-id': '62f27794-7a25-11ea-9ee7-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:45:59 GMT'}.
+2020-04-08 23:45:58,647 - Busqueda enviada a FoodApi
+2020-04-08 23:45:58,648 - 127.0.0.1 - - [08/Apr/2020 23:45:58] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:47:40,964 - Realizando busqueda en queue de:
+2020-04-08 23:47:40,966 - Client-Request-ID=a047b4e9-7a25-11ea-a870-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'a047b4e9-7a25-11ea-a870-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:47:40 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:47:41,612 - Client-Request-ID=a047b4e9-7a25-11ea-a870-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:47:41 GMT, Server-Request-ID=4c142910-f003-0079-2232-0ec181000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '4c142910-f003-0079-2232-0ec181000000', 'x-ms-client-request-id': 'a047b4e9-7a25-11ea-a870-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:47:41 GMT'}.
+2020-04-08 23:47:41,618 - Busqueda enviada a FoodApi
+2020-04-08 23:47:41,619 - 127.0.0.1 - - [08/Apr/2020 23:47:41] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-08 23:49:05,090 - Realizando busqueda en queue de:
+2020-04-08 23:49:05,090 - Client-Request-ID=d26c20f2-7a25-11ea-9103-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'd26c20f2-7a25-11ea-9103-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 05:49:05 GMT', 'Authorization': 'REDACTED'}.
+2020-04-08 23:49:05,678 - Client-Request-ID=d26c20f2-7a25-11ea-9103-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 05:49:06 GMT, Server-Request-ID=dfa39476-6003-0055-5832-0e43bc000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': 'dfa39476-6003-0055-5832-0e43bc000000', 'x-ms-client-request-id': 'd26c20f2-7a25-11ea-9103-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 05:49:06 GMT'}.
+2020-04-08 23:49:05,685 - Busqueda enviada a FoodApi
+2020-04-08 23:49:05,686 - 127.0.0.1 - - [08/Apr/2020 23:49:05] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-09 00:01:02,015 - Realizando busqueda en queue de:
+2020-04-09 00:01:02,016 - Client-Request-ID=7dbe5e44-7a27-11ea-9a90-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '7dbe5e44-7a27-11ea-9a90-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 06:01:02 GMT', 'Authorization': 'REDACTED'}.
+2020-04-09 00:01:02,586 - Client-Request-ID=7dbe5e44-7a27-11ea-9a90-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 06:01:03 GMT, Server-Request-ID=00d47815-8003-0010-6234-0e9e2d000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '00d47815-8003-0010-6234-0e9e2d000000', 'x-ms-client-request-id': '7dbe5e44-7a27-11ea-9a90-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 06:01:03 GMT'}.
+2020-04-09 00:01:02,589 - Busqueda enviada a FoodApi
+2020-04-09 00:01:02,589 - 127.0.0.1 - - [09/Apr/2020 00:01:02] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-09 00:01:49,602 - Realizando busqueda en queue de:
+2020-04-09 00:01:49,602 - Client-Request-ID=9a1b798d-7a27-11ea-989e-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '9a1b798d-7a27-11ea-989e-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 06:01:49 GMT', 'Authorization': 'REDACTED'}.
+2020-04-09 00:01:50,525 - Client-Request-ID=9a1b798d-7a27-11ea-989e-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 06:01:51 GMT, Server-Request-ID=c7acf62d-7003-008d-4f34-0ee46d000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': 'c7acf62d-7003-008d-4f34-0ee46d000000', 'x-ms-client-request-id': '9a1b798d-7a27-11ea-989e-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 06:01:51 GMT'}.
+2020-04-09 00:01:50,532 - Busqueda enviada a FoodApi
+2020-04-09 00:01:50,533 - 127.0.0.1 - - [09/Apr/2020 00:01:50] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-09 00:03:32,479 - Realizando busqueda en queue de:
+2020-04-09 00:03:32,480 - Client-Request-ID=d76d6a71-7a27-11ea-8271-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'd76d6a71-7a27-11ea-8271-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 06:03:32 GMT', 'Authorization': 'REDACTED'}.
+2020-04-09 00:03:33,069 - Client-Request-ID=d76d6a71-7a27-11ea-8271-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 06:03:33 GMT, Server-Request-ID=acc631ad-f003-00b5-4434-0ea534000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': 'acc631ad-f003-00b5-4434-0ea534000000', 'x-ms-client-request-id': 'd76d6a71-7a27-11ea-8271-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 06:03:33 GMT'}.
+2020-04-09 00:03:33,075 - Busqueda enviada a FoodApi
+2020-04-09 00:03:33,076 - 127.0.0.1 - - [09/Apr/2020 00:03:33] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-09 00:04:12,985 - Realizando busqueda en queue de:
+2020-04-09 00:04:12,986 - Client-Request-ID=ef921fe6-7a27-11ea-902f-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': 'ef921fe6-7a27-11ea-902f-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 06:04:12 GMT', 'Authorization': 'REDACTED'}.
+2020-04-09 00:04:13,645 - Client-Request-ID=ef921fe6-7a27-11ea-902f-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 06:04:14 GMT, Server-Request-ID=14b884bf-3003-00a3-3034-0e64aa000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': '14b884bf-3003-00a3-3034-0e64aa000000', 'x-ms-client-request-id': 'ef921fe6-7a27-11ea-902f-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 06:04:14 GMT'}.
+2020-04-09 00:04:13,654 - Busqueda enviada a FoodApi
+2020-04-09 00:04:13,655 - 127.0.0.1 - - [09/Apr/2020 00:04:13] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-09 00:07:50,788 - 127.0.0.1 - - [09/Apr/2020 00:07:50] "[31m[1mPOST / HTTP/1.1[0m" 405 -
+2020-04-09 00:07:50,789 - 127.0.0.1 - - [09/Apr/2020 00:07:50] "[31m[1mPOST / HTTP/1.1[0m" 405 -
+2020-04-09 00:07:52,453 - 127.0.0.1 - - [09/Apr/2020 00:07:52] "[32mPOST /orden HTTP/1.1[0m" 302 -
+2020-04-09 00:07:52,556 - 127.0.0.1 - - [09/Apr/2020 00:07:52] "[32mPOST /orden HTTP/1.1[0m" 302 -
+2020-04-09 00:08:36,865 - Realizando busqueda en queue de:
+2020-04-09 00:08:36,865 - Client-Request-ID=8cdad5c0-7a28-11ea-a232-a4c3f0e466c8 Outgoing request: Method=POST, Path=/monjoshqueue/messages, Query={'visibilitytimeout': None, 'messagettl': None, 'timeout': None}, Headers={'Content-Length': '111', 'x-ms-version': '2019-02-02', 'User-Agent': 'Azure-Storage/2.1.0-2.1.0 (Python CPython 3.8.2; Windows 10)', 'x-ms-client-request-id': '8cdad5c0-7a28-11ea-a232-a4c3f0e466c8', 'x-ms-date': 'Thu, 09 Apr 2020 06:08:36 GMT', 'Authorization': 'REDACTED'}.
+2020-04-09 00:08:37,453 - Client-Request-ID=8cdad5c0-7a28-11ea-a232-a4c3f0e466c8 Receiving Response: Server-Timestamp=Thu, 09 Apr 2020 06:08:38 GMT, Server-Request-ID=a18c418b-6003-00ff-3435-0e9553000000, HTTP Status Code=201, Message=Created, Headers={'transfer-encoding': 'chunked', 'content-type': 'application/xml', 'server': 'Windows-Azure-Queue/1.0 Microsoft-HTTPAPI/2.0', 'x-ms-request-id': 'a18c418b-6003-00ff-3435-0e9553000000', 'x-ms-client-request-id': '8cdad5c0-7a28-11ea-a232-a4c3f0e466c8', 'x-ms-version': '2019-02-02', 'date': 'Thu, 09 Apr 2020 06:08:38 GMT'}.
+2020-04-09 00:08:37,461 - Busqueda enviada a FoodApi
+2020-04-09 00:08:37,462 - 127.0.0.1 - - [09/Apr/2020 00:08:37] "[37mGET /buscar?query=potato HTTP/1.1[0m" 200 -
+2020-04-09 00:08:58,477 - 127.0.0.1 - - [09/Apr/2020 00:08:58] "[31m[1mPOST / HTTP/1.1[0m" 405 -
