@@ -10,6 +10,7 @@ from Producto import Producto
 from Orden import Orden
 from Ingrediente import Ingrediente
 from Busqueda import Busqueda
+from queue_messages import QueueWorker
 
 app = Flask(__name__)
 title = "Monjosh App"
@@ -33,6 +34,26 @@ ordenesCollection = db.ordenes
 @app.route('/')
 def hello():
     return 'Vista general'
+
+
+@app.route('/buscar')
+def buscar():
+    # Possible arguments = query, diet, intolerances, includeIngredients, excludeIngredients,
+    query = request.args.get("query")
+
+    if query is None:
+        return "Query no existente", 400
+
+    logging.info(f'Realizando busqueda en queue de:', request.args)
+
+    queue_messages = QueueWorker()
+    mensaje_enviado = queue_messages.queue_busqueda("query=" + query)
+    if mensaje_enviado:
+        logging.info(f'Busqueda enviada a FoodApi')
+        return 'Busqueda enviada a FoodApi'
+    else:
+        logging.info(f'Error al enviar mensaje en el queue')
+        return "Error en el servidor", 500
 
 
 @app.route("/busqueda", methods=['POST'])
