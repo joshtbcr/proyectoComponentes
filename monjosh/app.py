@@ -6,6 +6,10 @@ import logging
 import json
 from bson import json_util
 from azure.storage.queue import QueueService
+from Producto import Producto
+from Orden import Orden
+from Ingrediente import Ingrediente
+from Busqueda import Busqueda
 
 app = Flask(__name__)
 title = "Monjosh App"
@@ -21,10 +25,9 @@ db.authenticate(name="monjoshdb",
 queue_service = QueueService(account_name='joshstoragequeue', account_key='AhaC+CI57J5fz17mFen4sFNP/KawQMKGUAaAPhjgoJtarr5tQ4z/3VP0/Qc5zUBNV/9FvM4aZPMbSZbFihwYBQ==')
 
 # Nombre de colecciones
-productosCollection = db.productos
+busquedasCollection = db.busquedas
 ordenesCollection = db.ordenes
-ingredientesCollection = db.ingredientes
-usuariosCollection = db.usuarios
+
 
 # Metodos RESTful
 @app.route('/')
@@ -32,65 +35,37 @@ def hello():
     return 'Vista general'
 
 
-@app.route("/ingrediente", methods=['POST'])
-def ingresarIngrediente():
-    nombre = "nombreIngredientePrueba"
-    cantidad = "cantidadIngredientePrueba"
-    ingredientesCollection.insert(
-        {
-            'nombre': nombre,
-            'precio': cantidad
-        }
-    )
-    return redirect("/")
-
-
-@app.route("/ingredientes/all", methods=['GET'])
-def listaIngredientes():
+@app.route("/busqueda", methods=['POST'])
+def registrarBusqueda(producto):
     try:
-        logging.info(f'INICIO ==> OBTENER TODOS INGREDIENTES')
-        
-        ingredientes = [ingrediente for ingrediente in ingredientesCollection.find()]
-        ingredientes_json = json.loads(json_util.dumps(ingredientes))
-            
-        logging.info(f'FIN ==> OBTENER TODOS INGREDIENTES')
-
-        return jsonify({'ingredientes': ingredientes_json})
+        busqueda = Busqueda(producto)
+        busquedasCollection.insert(
+            {
+                'producto': busqueda.producto,
+                'fecha': busqueda.fecha,
+                'puntos': busqueda.puntos,
+            }
+        )
+        return 'busqueda registrada'
     except Exception as exc:
-        logging.error(f'ERROR: No se pueden obtener los ingredientes: {exc}')
+        logging.error(f'ERROR: No se pudo registrar busqueda: {exc}')
+        return 'busqueda no registrada'
+
+
+@app.route("/busquedas/all", methods=['GET'])
+def listaBusquedas():
+    try:
+        logging.info(f'INICIO ==> OBTENER TODAS LAS BUSQUEDAS')
+
+        busquedas = [busqueda for busqueda in busquedasCollection.find()]
+        busquedas_json = json.loads(json_util.dumps(busquedas))
+
+        logging.info(f'FIN ==> OBTENER TODAS LAS BUSQUEDAS')
+
+        return jsonify({'busquedas': busquedas_json})
+    except Exception as exc:
+        logging.error(f'ERROR: No se pueden obtener las busquedas: {exc}')
         return None
-
-
-@app.route("/orden", methods=['POST'])
-def ingresarOrden():
-    numeroOrden = "nombreProductoPrueba"
-    fecha = "precioProductoPrueba"
-    estado = "precioProductoPrueba"
-    precioOrden = "precioProductoPrueba"
-    ordenesCollection.insert(
-        {
-            'numeroOrden': numeroOrden,
-            'fecha': fecha,
-            'estado': estado,
-            'precio': precioOrden
-        }
-    )
-    return redirect("/")
-
-
-@app.route("/usuario", methods=['POST'])
-def ingresarUsuario():
-    username = "usernamePrueba"
-    password = "passwordPrueba"
-    email = "emailPrueba"
-    usuariosCollection.insert(
-        {
-            "username": username,
-            "password": password,
-            "email": email
-        }
-    )
-    return redirect("/")
 
 
 @app.route("/enviarMensaje", methods=['GET'])
@@ -98,6 +73,102 @@ def enviarMensajeACola():
     queue_service.create_queue('monjoshqueue')
     queue_service.put_message('monjoshqueue', u'Hello Monica')
     return 'mensaje enviado'
+
+
+@app.route("/generarOrden", methods=['POST'])
+def generarOrden():
+    request_json = request.get_json()
+    numero_orden = request_json.get('numeroOrden')
+    fecha = request_json.get('fecha')
+    estado = request_json.get('estado')
+    precio = request_json.get('precio')
+    productos = request_json.get('productos')
+    lst_productos = []
+    for producto in productos:
+        ingredientes = producto['ingredientes']
+        lst_ingredientes = []
+        for ingrediente in ingredientes:
+            i = Ingrediente(
+                nombre_ingrediente=ingrediente['nombreIngrediente'],
+                cantidad_ingrediente=ingrediente['cantidadIngrediente'],
+                precio_ingrediente=ingrediente['precioIngrediente']
+            )
+            ingrediente_json = json.dumps(i, default=i.ingredienteADiccionario)
+            lst_ingredientes.append(ingrediente_json)
+
+        ing_objects = [json.loads(ing) for ing in lst_ingredientes]
+        p = Producto(
+            producto['nombreProducto'],
+            producto['cantidadProducto'],
+            producto['precioProducto'],
+            ing_objects
+        )
+        producto_json = json.dumps(p, default=p.productoADiccionario)
+        lst_productos.append(producto_json)
+
+    orden = Orden(
+        numero_orden,
+        fecha,
+        estado,
+        precio,
+        lst_productos
+    )
+    prod_objects = [json.loads(prod) for prod in orden.productos]
+    ordenesCollection.insert_one(
+        {
+            'numeroOrden': orden.numero_orden,
+            'fecha': orden.fecha,
+            'estado': orden.estado,
+            'precio': orden.precio,
+            'productos': prod_objects
+        }
+    )
+    return 'Orden generada'
+
+
+@app.route("/ordenes/all", methods=['GET'])
+def listaOrdenes():
+    try:
+        logging.info(f'INICIO ==> OBTENER TODAS LAS ORDENES')
+
+        ordenes = [orden for orden in ordenesCollection.find()]
+        ordenes_json = json.loads(json_util.dumps(ordenes))
+
+        logging.info(f'FIN ==> OBTENER TODAS LAS ORDENES')
+
+        return jsonify({'ordenes': ordenes_json})
+    except Exception as exc:
+        logging.error(f'ERROR: No se pueden obtener las busquedas: {exc}')
+        return None
+
+
+@app.route("/ordenes/<estado>", methods=['GET'])
+def listaOrdenesPorEstado(estado):
+    try:
+        logging.info(f'INICIO ==> OBTENER TODAS LAS ORDENES POR ESTADO')
+
+        ordenes = [orden for orden in ordenesCollection.find({"estado": estado})]
+        ordenes_json = json.loads(json_util.dumps(ordenes))
+
+        logging.info(f'FIN ==> OBTENER TODAS LAS ORDENES POR ESTADO')
+
+        return jsonify({'ordenes': ordenes_json})
+    except Exception as exc:
+        logging.error(f'ERROR: No se pueden obtener las busquedas: {exc}')
+        return None
+
+
+@app.route("/actualizarOrden", methods=['PUT'])
+def actualizarOrden():
+    try:
+        request_json = request.get_json()
+        id = request_json.get("_id")
+        estado = request_json.get("estado")
+        ordenesCollection.update({"_id": ObjectId(id)}, {'$set': {"estado": estado}})
+        return 'Orden actualizada'
+    except Exception as exc:
+        logging.error(f'ERROR: No se pudo actualizar orden: {exc}')
+        return 'Orden NO actualizada'
 
 
 # APP.RUN y puerto
