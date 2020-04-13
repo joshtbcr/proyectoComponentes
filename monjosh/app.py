@@ -1,4 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
+
+from flask_cors import CORS
 from bson import ObjectId
 from pymongo import MongoClient
 import os
@@ -15,6 +17,10 @@ from queue_messages import QueueWorker
 app = Flask(__name__)
 title = "Monjosh App"
 heading = "Monjosh App"
+
+
+# enable CORS
+CORS(app, resources={r'/*': {'origins': '*'}})
 
 logging.basicConfig(format='%(asctime)s - %(message)s', level=logging.INFO, filename='example.log')
 
