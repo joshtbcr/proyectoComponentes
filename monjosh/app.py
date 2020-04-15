@@ -6,6 +6,7 @@ from pymongo import MongoClient
 import os
 import logging
 import json
+import uuid
 from bson import json_util
 from azure.storage.queue import QueueService
 from Producto import Producto
@@ -35,6 +36,9 @@ queue_service = QueueService(account_name='joshstoragequeue', account_key='AhaC+
 busquedasCollection = db.busquedas
 ordenesCollection = db.ordenes
 
+#Array de busquedas pendientes
+busquedasPendientes = {}
+
 
 # Metodos RESTful
 @app.route('/')
@@ -42,38 +46,84 @@ def hello():
     return 'Vista general'
 
 
-@app.route('/buscar')
+@app.route('/buscar', methods=['GET', 'POST'])
 def buscar():
-    # Possible arguments = query, diet, intolerances, includeIngredients, excludeIngredients,
-    query = request.args.get("query")
+    try:
+        # Possible arguments = query, diet, intolerances, includeIngredients, excludeIngredients,
+        query = request.args.get("query")
+        busquedaId = request.args.get("busquedaId")
 
-    if query is None:
-        return "Query no existente", 400
+        #Si es respuesta del FoodApi
+        if request.method == 'POST':
+            busquedasPendientes[busquedaId] = request.get_json()
+            puntosDia = request.args.get("puntosDia")
+            puntosBusqueda = request.args.get("puntosBusqueda")
+            #Registrar busqueda
 
-    logging.info(f'Realizando busqueda en queue de:', request.args)
 
-    queue_messages = QueueWorker()
-    mensaje_enviado = queue_messages.queue_busqueda("query=" + query)
-    if mensaje_enviado:
-        logging.info(f'Busqueda enviada a FoodApi')
-        return 'Busqueda enviada a FoodApi'
-    else:
-        logging.info(f'Error al enviar mensaje en el queue')
-        return "Error en el servidor", 500
+            return "Busqueda actualizada en WebApi"
+
+        if request.method == 'GET':
+            #Si es busqueda pendiente
+            if query is None and busquedaId is not None:
+                print("Procesando busqueda con ID= "+ busquedaId)
+                
+                print("Busquedas pendientes = ")
+                for busquedaId, productos in busquedasPendientes.items():
+                    if productos == False:
+                        print("\tSin resolver = " + busquedaId)
+                    else:
+                        print("\tResuelta:  " + busquedaId)
+
+                #Si la busqueda esta pendiente y ya fue resuelta por el FoodApi
+                if busquedaId in busquedasPendientes and busquedaId != False:
+                    productos = busquedasPendientes[busquedaId]
+                    
+                    #Eliminar de busquedas pendientes (quitar de RAM)
+                    del busquedasPendientes[busquedaId]
+                    return str(productos), 200
+
+                #Si la busqueda esta pendiente pero no ha sido resuelta por el FoodApi
+                elif busquedaId in busquedasPendientes and busquedaId == False:
+                    return "Busqueda pendiente", 202
+                else:
+                    return "Busqueda inexistente", 404
+
+            #Si es nueva busqueda del cliente
+            elif query is not None:
+
+                busquedaId = str(uuid.uuid4())
+                busquedasPendientes[busquedaId] = False
+                
+                logging.info(f'Realizando busqueda en queue de:', request.args)
+
+                queue_messages = QueueWorker()
+                mensaje_enviado = queue_messages.queue_busqueda(busquedaId + "$query=" + query)
+                if mensaje_enviado:
+                    logging.info(f'Busqueda enviada a FoodApi')
+                    return busquedaId, 202
+                else:
+                    logging.info(f'Error al enviar mensaje en el queue')
+                    return "Error en el servidor", 500
+    except Exception as exc:
+        logging.error(f'ERROR: No se pudo registrar busqueda: {exc}')
+        return None, 500
 
 
 @app.route("/busqueda", methods=['POST'])
-def registrarBusqueda(producto):
+def registrarBusqueda():
     try:
-        busqueda = Busqueda(producto)
-        busquedasCollection.insert(
-            {
-                'producto': busqueda.producto,
-                'fecha': busqueda.fecha,
-                'puntos': busqueda.puntos,
-            }
-        )
-        return 'busqueda registrada'
+        #busqueda = Busqueda(producto)
+        # busquedasCollection.insert(
+        #     {
+        #         'producto': busqueda.producto,
+        #         'fecha': busqueda.fecha,
+        #         'puntos': busqueda.puntos,
+        #     }
+        # )
+        # return 'busqueda registrada'
+        #print (request.get_json())
+        return 'Busqueda recibida', 200
     except Exception as exc:
         logging.error(f'ERROR: No se pudo registrar busqueda: {exc}')
         return 'busqueda no registrada'
