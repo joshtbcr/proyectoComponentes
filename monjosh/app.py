@@ -155,29 +155,29 @@ def enviarMensajeACola():
 @app.route("/generarOrden", methods=['POST'])
 def generarOrden():
     request_json = request.get_json()
-    numero_orden = request_json.get('numeroOrden')
-    fecha = request_json.get('fecha')
-    estado = request_json.get('estado')
-    precio = request_json.get('precio')
-    productos = request_json.get('productos')
+    numero_orden = request_json.get('OrderId')
+    estado = request_json.get('OrderStatus')
+    precio = request_json.get('TotalPrice')
+    productos = request_json.get('Products')
     lst_productos = []
     for producto in productos:
-        ingredientes = producto['ingredientes']
+        ingredientes = producto['Ingredients']
         lst_ingredientes = []
         for ingrediente in ingredientes:
             i = Ingrediente(
-                nombre_ingrediente=ingrediente['nombreIngrediente'],
-                cantidad_ingrediente=ingrediente['cantidadIngrediente'],
-                precio_ingrediente=ingrediente['precioIngrediente']
+                nombre_ingrediente=ingrediente['Name'],
+                cantidad_ingrediente=ingrediente['Amount'],
+                unidad_ingrediente=ingrediente['Unit']
             )
             ingrediente_json = json.dumps(i, default=i.ingredienteADiccionario)
             lst_ingredientes.append(ingrediente_json)
 
         ing_objects = [json.loads(ing) for ing in lst_ingredientes]
         p = Producto(
-            producto['nombreProducto'],
-            producto['cantidadProducto'],
-            producto['precioProducto'],
+            producto['Name'],
+            producto['Servings'],
+            producto['PricePerServing'],
+            producto['Image'],
             ing_objects
         )
         producto_json = json.dumps(p, default=p.productoADiccionario)
@@ -185,7 +185,6 @@ def generarOrden():
 
     orden = Orden(
         numero_orden,
-        fecha,
         estado,
         precio,
         lst_productos
@@ -193,14 +192,14 @@ def generarOrden():
     prod_objects = [json.loads(prod) for prod in orden.productos]
     ordenesCollection.insert_one(
         {
-            'numeroOrden': orden.numero_orden,
-            'fecha': orden.fecha,
-            'estado': orden.estado,
-            'precio': orden.precio,
-            'productos': prod_objects
+            'OrderId': orden.numero_orden,
+            'Date': orden.fecha,
+            'OrderStatus': orden.estado,
+            'TotalPrice': orden.precio,
+            'Products': prod_objects
         }
     )
-    return 'Orden generada'
+    return 'orden generada'
 
 
 @app.route("/ordenes/all", methods=['GET'])
@@ -251,7 +250,4 @@ def actualizarOrden():
 # APP.RUN y puerto
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
-
-
-
 
