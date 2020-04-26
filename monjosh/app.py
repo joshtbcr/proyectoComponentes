@@ -76,7 +76,7 @@ def buscar():
                         print("\tResuelta:  " + busquedaId)
 
                 #Si la busqueda esta pendiente y ya fue resuelta por el FoodApi
-                if busquedaId in busquedasPendientes and busquedaId != False:
+                if busquedaId in busquedasPendientes and busquedasPendientes[busquedaId] != False:
                     productos = busquedasPendientes[busquedaId]
                     
                     #Eliminar de busquedas pendientes (quitar de RAM)
