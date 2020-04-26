@@ -238,9 +238,11 @@ def listaOrdenesPorEstado(estado):
 def actualizarOrden():
     try:
         request_json = request.get_json()
-        id = request_json.get("_id")
-        estado = request_json.get("estado")
-        ordenesCollection.update({"_id": ObjectId(id)}, {'$set': {"estado": estado}})
+        id = request_json.get("_id").get("$oid")
+        estado = request_json.get("OrderStatus")
+        query = {"_id": ObjectId(id)}
+        update = { "$set": {"OrderStatus": estado}}
+        ordenesCollection.update_one(query, update)
         return 'Orden actualizada'
     except Exception as exc:
         logging.error(f'ERROR: No se pudo actualizar orden: {exc}')
