@@ -76,12 +76,14 @@ def buscar():
                         print("\tResuelta:  " + busquedaId)
 
                 #Si la busqueda esta pendiente y ya fue resuelta por el FoodApi
-                if busquedaId in busquedasPendientes and busquedaId != False:
+                if busquedaId in busquedasPendientes and busquedasPendientes[busquedaId] != False:
                     productos = busquedasPendientes[busquedaId]
                     
                     #Eliminar de busquedas pendientes (quitar de RAM)
                     del busquedasPendientes[busquedaId]
-                    return str(productos), 200
+                    #return jsonify(productos),200
+                    return jsonify({'products': productos}),200
+                    #return str(productos), 200
 
                 #Si la busqueda esta pendiente pero no ha sido resuelta por el FoodApi
                 elif busquedaId in busquedasPendientes and busquedaId == False:
@@ -155,29 +157,29 @@ def enviarMensajeACola():
 @app.route("/generarOrden", methods=['POST'])
 def generarOrden():
     request_json = request.get_json()
-    numero_orden = request_json.get('numeroOrden')
-    fecha = request_json.get('fecha')
-    estado = request_json.get('estado')
-    precio = request_json.get('precio')
-    productos = request_json.get('productos')
+    numero_orden = request_json.get('OrderId')
+    estado = request_json.get('OrderStatus')
+    precio = request_json.get('TotalPrice')
+    productos = request_json.get('Products')
     lst_productos = []
     for producto in productos:
-        ingredientes = producto['ingredientes']
+        ingredientes = producto['Ingredients']
         lst_ingredientes = []
         for ingrediente in ingredientes:
             i = Ingrediente(
-                nombre_ingrediente=ingrediente['nombreIngrediente'],
-                cantidad_ingrediente=ingrediente['cantidadIngrediente'],
-                precio_ingrediente=ingrediente['precioIngrediente']
+                nombre_ingrediente=ingrediente['Name'],
+                cantidad_ingrediente=ingrediente['Amount'],
+                unidad_ingrediente=ingrediente['Unit']
             )
             ingrediente_json = json.dumps(i, default=i.ingredienteADiccionario)
             lst_ingredientes.append(ingrediente_json)
 
         ing_objects = [json.loads(ing) for ing in lst_ingredientes]
         p = Producto(
-            producto['nombreProducto'],
-            producto['cantidadProducto'],
-            producto['precioProducto'],
+            producto['Name'],
+            producto['Servings'],
+            producto['PricePerServing'],
+            producto['Image'],
             ing_objects
         )
         producto_json = json.dumps(p, default=p.productoADiccionario)
@@ -185,7 +187,6 @@ def generarOrden():
 
     orden = Orden(
         numero_orden,
-        fecha,
         estado,
         precio,
         lst_productos
@@ -193,14 +194,14 @@ def generarOrden():
     prod_objects = [json.loads(prod) for prod in orden.productos]
     ordenesCollection.insert_one(
         {
-            'numeroOrden': orden.numero_orden,
-            'fecha': orden.fecha,
-            'estado': orden.estado,
-            'precio': orden.precio,
-            'productos': prod_objects
+            'OrderId': orden.numero_orden,
+            'Date': orden.fecha,
+            'OrderStatus': orden.estado,
+            'TotalPrice': orden.precio,
+            'Products': prod_objects
         }
     )
-    return 'Orden generada'
+    return 'orden generada'
 
 
 @app.route("/ordenes/all", methods=['GET'])
@@ -219,12 +220,12 @@ def listaOrdenes():
         return None
 
 
-@app.route("/ordenes/<estado>", methods=['GET'])
-def listaOrdenesPorEstado(estado):
+@app.route("/ordenes/<OrderStatus>", methods=['GET'])
+def listaOrdenesPorEstado(OrderStatus):
     try:
         logging.info(f'INICIO ==> OBTENER TODAS LAS ORDENES POR ESTADO')
 
-        ordenes = [orden for orden in ordenesCollection.find({"estado": estado})]
+        ordenes = [orden for orden in ordenesCollection.find({"OrderStatus": OrderStatus})]
         ordenes_json = json.loads(json_util.dumps(ordenes))
 
         logging.info(f'FIN ==> OBTENER TODAS LAS ORDENES POR ESTADO')
@@ -239,9 +240,11 @@ def listaOrdenesPorEstado(estado):
 def actualizarOrden():
     try:
         request_json = request.get_json()
-        id = request_json.get("_id")
-        estado = request_json.get("estado")
-        ordenesCollection.update({"_id": ObjectId(id)}, {'$set': {"estado": estado}})
+        id = request_json.get("_id").get("$oid")
+        estado = request_json.get("OrderStatus")
+        query = {"_id": ObjectId(id)}
+        update = { "$set": {"OrderStatus": estado}}
+        ordenesCollection.update_one(query, update)
         return 'Orden actualizada'
     except Exception as exc:
         logging.error(f'ERROR: No se pudo actualizar orden: {exc}')
@@ -251,7 +254,4 @@ def actualizarOrden():
 # APP.RUN y puerto
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=5000)
-
-
-
 
