@@ -81,7 +81,9 @@ def buscar():
                     
                     #Eliminar de busquedas pendientes (quitar de RAM)
                     del busquedasPendientes[busquedaId]
-                    return str(productos), 200
+                    #return jsonify(productos),200
+                    return jsonify({'products': productos}),200
+                    #return str(productos), 200
 
                 #Si la busqueda esta pendiente pero no ha sido resuelta por el FoodApi
                 elif busquedaId in busquedasPendientes and busquedaId == False:
@@ -218,12 +220,12 @@ def listaOrdenes():
         return None
 
 
-@app.route("/ordenes/<estado>", methods=['GET'])
-def listaOrdenesPorEstado(estado):
+@app.route("/ordenes/<OrderStatus>", methods=['GET'])
+def listaOrdenesPorEstado(OrderStatus):
     try:
         logging.info(f'INICIO ==> OBTENER TODAS LAS ORDENES POR ESTADO')
 
-        ordenes = [orden for orden in ordenesCollection.find({"estado": estado})]
+        ordenes = [orden for orden in ordenesCollection.find({"OrderStatus": OrderStatus})]
         ordenes_json = json.loads(json_util.dumps(ordenes))
 
         logging.info(f'FIN ==> OBTENER TODAS LAS ORDENES POR ESTADO')
