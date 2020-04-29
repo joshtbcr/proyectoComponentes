@@ -1,11 +1,16 @@
-FROM python:3.8.0
+FROM alpine:latest
 
-WORKDIR /user/src/app
+RUN apk add --no-cache python3-dev \
+    && pip3 install --upgrade pip
 
-COPY requirements.txt requirements.txt
+WORKDIR /app
 
-RUN pip install -r requirements.txt
+COPY . /app
 
-COPY . .
-EXPOSE 80
-ENTRYPOINT ["python", "app.py"]
+RUN pip3 --no-cache-dir install -r requirements.txt                                                                            
+
+EXPOSE 5000
+
+ENTRYPOINT  ["python3"]
+
+CMD ["app.py"]
